@@ -79,15 +79,20 @@ if __name__ == "__main__":
     import sys
 
     domain = sys.argv[1]
-    try:
-        port_s = int(sys.argv[2])
-        port_e = int(sys.argv[3])
-    except:
-        port_s = 1
-        port_e = 65535
-    print("Scaning " + domain)
-    scanner = IPv4PortScanner(domain=domain, port_range=(port_s, port_e))
-    scanner.run()
-    print("ports scanned: " + str(port_s) + "-" + str(port_e))
-    print("open found: " + str(scanner._ports_active))
+    
+    if domain is not None:
+        try:
+            port_s = int(sys.argv[2])
+            port_e = int(sys.argv[3])
+        except:
+            port_s = 1
+            port_e = 65535
+            print(f"Setting default port range: {port_s} - {port_e}")
+        print("Scaning " + domain)
+        scanner = IPv4PortScanner(domain=domain, port_range=(port_s, port_e))
+        scanner.run()
+        print(f"ports scanned: " {str(port_s)} "-" {str(port_e)})
+        print("open found: " {str(scanner._ports_active)})
+    else:
+        print("ERR: domain name is required!")
 
