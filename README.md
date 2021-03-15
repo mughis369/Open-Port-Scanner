@@ -28,3 +28,5 @@ python port_scanner.py google.com
 ```
 
 **To chech accuracy of the script you can perform a small range scan like 1-1000 it will give you results fast and you can compare those with nmap.**
+
+----------------------------------------------------------------------------
